@@ -1,10 +1,10 @@
 # Web Header Security Auditor
 
-**Candidate Name:** Mohammad Shah
-**Track:** Red Team
-**Tool Name:** Web Header Auditor CLI
-**Time Spent:** ~2 hours
-
+👤 Candidate Name: Mohammad Shah  
+🎯 Track: Red Team  
+🛠 Tool Name: Web Header Auditor CLI  
+⏱ Time Spent: ~2 hours
+##
 ## Tool Description
 My tool checks whether a website is actually telling browsers how to protect itself. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS. For every header that’s missing, it tells you how bad the gap is and, more importantly, why it matters in plain English: no CSP means XSS just works, no X-Frame-Options means clickjacking is on the table, no HSTS means someone could strip your HTTPS. At the end it hands you a JSON risk report with a score and grade, so you know exactly what to fix first.
 
@@ -92,8 +92,13 @@ Risk Score: 31/31   Grade: CRITICAL
 
 
 ## Output Evidence
-Terminal screenshot: `sample_output/terminal_screenshot.png`
-Generated JSON report: `sample_output/report_http__localhost_3000.json`
+
+**Terminal screenshot:**
+
+![Terminal Output](sample_output/terminal_screenshot.png)
+
+**Generated JSON report:** [`sample_output/report_http__localhost_3000.json`](sample_output/report_http__localhost_3000.json)
+
 
 ## Self-Attestation
 "I self-sourced all materials, used only public/synthetic/self-owned resources, built a working tool, and performed non-destructive work."
