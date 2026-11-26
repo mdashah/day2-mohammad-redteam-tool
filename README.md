@@ -7,11 +7,11 @@
 
 ## Tool Description
 
-My tool checks whether a website is actually telling browsers how to protect itself. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS.
+My tool checks whether a website actually tells browsers how to protect themselves. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS.
 
 For every missing header, it tells you how bad the gap is and, more importantly, why it matters in plain English:
 
-- No CSP means XSS just works
+- No CSP means XSS works
 - No X-Frame-Options means clickjacking is on the table
 - No HSTS means someone could strip your HTTPS
 
@@ -49,7 +49,7 @@ python3 web_header_auditor.py --url http://localhost:3000
 
 **Requirements:** Python 3.8+. No external dependencies needed (standard library only).
 
-### Option 3 — pip (Windows / systems without PEP 668 restrictions)
+### Option 3 — pip (Windows/systems without PEP 668 restrictions)
 
 ```bash
 pip install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
