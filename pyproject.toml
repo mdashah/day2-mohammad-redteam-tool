@@ -12,3 +12,6 @@ dependencies = []
 
 [project.scripts]
 web-header-auditor = "web_header_auditor:main"
+
+[tool.setuptools]
+py-modules = ["web_header_auditor"]
