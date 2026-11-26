@@ -39,9 +39,10 @@ venv\Scripts\activate.bat
 
 You should see `(venv)` at the start of your prompt.
 
-### Step 2 — Install dependencies
+### Step 2 — Dependencies
 ```bash
-pip install -r requirements.txt
+No external dependencies are required.
+This tool uses Python standard library modules only.
 ```
 
 ### Step 3 — Start a local target (Terminal 1)
