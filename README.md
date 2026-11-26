@@ -7,11 +7,11 @@
 
 ## Tool Description
 
-My tool checks whether a website actually tells browsers how to protect themselves. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS.
+My tool checks whether a website is actually telling browsers how to protect itself. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS.
 
 For every missing header, it tells you how bad the gap is and, more importantly, why it matters in plain English:
 
-- No CSP means XSS works
+- No CSP means XSS just works
 - No X-Frame-Options means clickjacking is on the table
 - No HSTS means someone could strip your HTTPS
 
@@ -39,7 +39,7 @@ web-header-auditor --url http://localhost:3000
 > To use batch mode (`--input`) with the bundled `sample_input/urls.txt`, use
 > Option 2 (clone), or create your own URL file anywhere and pass its path.
 
-### Option 2 — Clone and run manually (no install needed)
+### Option 2 — Clone and run manually (no install needed, works on any OS)
 
 ```bash
 git clone https://github.com/mdashah/day2-mohammad-redteam-tool.git
@@ -49,21 +49,47 @@ python3 web_header_auditor.py --url http://localhost:3000
 
 **Requirements:** Python 3.8+. No external dependencies needed (standard library only).
 
-### Option 3 — pip (Windows/systems without PEP 668 restrictions)
+### Option 3 — pip (Windows)
 
-```bash
+Open **PowerShell** or **cmd** (Windows key → type `powershell` → Enter), then:
+
+```powershell
 pip install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
-web-header-auditor --url http://localhost:3000
+```
+
+> **Prerequisites:** Python 3.8+ and Git must be installed
+> ([python.org](https://www.python.org/downloads/) — check "Add Python to PATH" during install;
+> [git-scm.com](https://git-scm.com/download/win)). If `git` is not installed,
+> use Option 2 instead (download the repo as a ZIP from GitHub, extract, and run manually).
+
+If the command isn't recognized after install, **close and reopen PowerShell** (refreshes PATH), then verify:
+
+```powershell
+web-header-auditor --help
+```
+
+If `pip` itself isn't recognized, use:
+
+```powershell
+python -m pip install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
 ```
 
 ## How to Run
 
 ### Step 1 — Start a local target (Terminal 1)
 
-Open a **first terminal**, then start a test web server to audit:
+Open a **first terminal**, then start a test web server to audit.
+
+**Linux (Kali/Debian):**
 
 ```bash
 python3 -m http.server 3000
+```
+
+**Windows (PowerShell / cmd):**
+
+```powershell
+python -m http.server 3000
 ```
 
 Keep this terminal running. It serves a basic server on `http://localhost:3000` (this server sends NO security headers, which is perfect for demonstrating the tool). You can also point the tool at your own DVWA or any other local lab instead.
@@ -92,6 +118,19 @@ web-header-auditor --input ~/my_targets.txt
 ```bash
 python3 web_header_auditor.py --url http://localhost:3000
 python3 web_header_auditor.py --input sample_input/urls.txt
+```
+
+**Windows (PowerShell / cmd):**
+
+```powershell
+# Single URL:
+web-header-auditor --url http://localhost:3000
+
+# Batch mode (with a URL file):
+web-header-auditor --input C:\Users\YourName\my_targets.txt
+
+# Or manually from the cloned repo:
+python web_header_auditor.py --url http://localhost:3000
 ```
 
 ### Step 3 — View the results
@@ -125,7 +164,7 @@ Risk Score: 31/31 Grade: CRITICAL
 
 ![Terminal Output](sample_output/terminal_screenshot.png)
 
-**pipx install verified:**
+**pipx install verified on Kali:**
 
 ![pipx Install](sample_output/pipx_install.png)
 
