@@ -19,28 +19,42 @@ At the end, it hands you a JSON risk report with a score and grade, so you know 
 
 ## Installation
 
-### Option 1 — One-command install (recommended)
+### Option 1 — pipx install (recommended, verified on Kali)
 
-Install directly from GitHub as a CLI command:
+Newer Kali/Debian systems block system-wide pip installs (PEP 668), so use `pipx`:
 
 ```bash
-pip install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
+sudo apt install pipx
+pipx ensurepath
+pipx install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
 ```
 
-Then run from anywhere — no cloning or venv needed:
+Then run the command from **anywhere** — no cloning or venv needed:
 
 ```bash
 web-header-auditor --url http://localhost:3000
 ```
 
-### Option 2 — Clone and run manually
+> **Note:** Installing via pipx provides the `web-header-auditor` command only.
+> To use batch mode (`--input`) with the bundled `sample_input/urls.txt`, use
+> Option 2 (clone), or create your own URL file anywhere and pass its path.
+
+### Option 2 — Clone and run manually (no install needed)
 
 ```bash
 git clone https://github.com/mdashah/day2-mohammad-redteam-tool.git
 cd day2-mohammad-redteam-tool
+python3 web_header_auditor.py --url http://localhost:3000
 ```
 
 **Requirements:** Python 3.8+. No external dependencies needed (standard library only).
+
+### Option 3 — pip (Windows / systems without PEP 668 restrictions)
+
+```bash
+pip install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
+web-header-auditor --url http://localhost:3000
+```
 
 ## How to Run
 
@@ -52,30 +66,32 @@ Open a **first terminal**, then start a test web server to audit:
 python3 -m http.server 3000
 ```
 
-Keep this terminal running. It serves a basic server on `http://localhost:3000` (this server sends NO security headers, which is perfect for demonstrating the tool).
-
-You can also point the tool at your own DVWA or any other local lab instead.
+Keep this terminal running. It serves a basic server on `http://localhost:3000` (this server sends NO security headers, which is perfect for demonstrating the tool). You can also point the tool at your own DVWA or any other local lab instead.
 
 ### Step 2 — Run the auditor (Terminal 2)
 
-**If installed via pip (Option 1):**
+**Scan a single URL:**
 
 ```bash
-# Scan a single URL directly:
 web-header-auditor --url http://localhost:3000
-
-# Or scan all URLs listed in sample_input/urls.txt (one URL per line):
-web-header-auditor --input sample_input/urls.txt
 ```
 
-**If running manually from the cloned repo (Option 2):**
+**Batch mode — scan all URLs in a file (one URL per line):**
 
 ```bash
-# Scan all URLs listed in sample_input/urls.txt (one URL per line):
-python3 web_header_auditor.py --input sample_input/urls.txt
+# Using the bundled sample file (requires the cloned repo, Option 2):
+cd day2-mohammad-redteam-tool
+web-header-auditor --input sample_input/urls.txt
 
-# Or scan a single URL directly:
+# Or with your own file from anywhere:
+web-header-auditor --input ~/my_targets.txt
+```
+
+**If running manually from the cloned repo:**
+
+```bash
 python3 web_header_auditor.py --url http://localhost:3000
+python3 web_header_auditor.py --input sample_input/urls.txt
 ```
 
 ### Step 3 — View the results
@@ -108,6 +124,10 @@ Risk Score: 31/31 Grade: CRITICAL
 **Terminal screenshot:**
 
 ![Terminal Output](sample_output/terminal_screenshot.png)
+
+**pipx install verified:**
+
+![pipx Install](sample_output/pipx_install.png)
 
 **Generated JSON report:** [`sample_output/report_http__localhost_3000.json`](sample_output/report_http__localhost_3000.json)
 
