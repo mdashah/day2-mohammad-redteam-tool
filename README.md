@@ -7,11 +7,11 @@
 
 ## Tool Description
 
-My tool checks whether a website is actually telling browsers how to protect itself. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS.
+My tool checks whether a website actually tells browsers how to protect themselves. You give it a URL (like a local DVWA lab on localhost), it sends a simple GET request, and then compares the response headers against a checklist of security headers — things like CSP, X-Frame-Options, and HSTS.
 
 For every missing header, it tells you how bad the gap is and, more importantly, why it matters in plain English:
 
-- No CSP means XSS just works
+- No CSP means XSS works
 - No X-Frame-Options means clickjacking is on the table
 - No HSTS means someone could strip your HTTPS
 
@@ -62,7 +62,7 @@ pip install git+https://github.com/mdashah/day2-mohammad-redteam-tool.git
 > [git-scm.com](https://git-scm.com/download/win)). If `git` is not installed,
 > use Option 2 instead (download the repo as a ZIP from GitHub, extract, and run manually).
 
-If the command isn't recognized after install, **close and reopen PowerShell** (refreshes PATH), then verify:
+If the command isn't recognized after installation, **close and reopen PowerShell** (refreshes PATH), then verify:
 
 ```powershell
 web-header-auditor --help
