@@ -162,6 +162,16 @@ Risk Score: 34/34 Grade: CRITICAL
 > web-header-auditor --url http://your-own-site.com --allow-external
 > ```
 
+## Notes & Limitations
+
+- **User-Agent**: A browser-like User-Agent is used so servers respond as they do
+  to real clients; some sites tailor responses per client.
+- **Non-destructive**: GET requests only; no payloads, no probing.
+- **Default scope**: Only localhost/127.0.0.1 targets unless `--allow-external` is passed.
+- **Auth-protected pages**: Audits the public response only (e.g., a login page),
+  not headers of authenticated sessions.
+- **Future work**: Audit full redirect chains and report the final response separately.
+
 ## Output Evidence
 
 **Terminal screenshot:**
