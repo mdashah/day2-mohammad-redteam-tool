@@ -44,7 +44,7 @@ def fetch_headers(url: str, timeout: int = 10):
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
     ctx.verify_mode = ssl.CERT_NONE  # local labs use self-signed certs
-    req = urllib.request.Request(url, headers={"User-Agent": "HeaderAuditor/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"})
     with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
         return dict(resp.headers)
 
