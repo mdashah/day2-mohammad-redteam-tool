@@ -2,7 +2,7 @@
 
 👤 Candidate Name: Mohammad Shah  
 🎯 Track: Red Team  
-🛠 Tool Name: Web Header Auditor CLI  
+🛠 Tool Name: Web Header Security Auditor CLI  
 ⏱ Time Spent: ~2 hours
 ##
 ## Tool Description
