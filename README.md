@@ -145,7 +145,7 @@ python web_header_auditor.py --url http://localhost:3000
 [*] Auditing http://localhost:3000 ...
 
 ===== SECURITY HEADER REPORT: http://localhost:3000 =====
-Risk Score: 31/31 Grade: CRITICAL
+Risk Score: 34/34 Grade: CRITICAL
 
 [-] Content-Security-Policy: MISSING (Severity: HIGH)
 [-] X-Frame-Options: MISSING (Severity: MEDIUM)
@@ -157,6 +157,10 @@ Risk Score: 31/31 Grade: CRITICAL
 
 > ⚠️ **Non-destructive:** The tool only sends GET requests and refuses to scan
 > any target that isn't localhost / 127.0.0.1.
+> > To audit public sites **you own or are authorized to test**, add `--allow-external`:
+> ```bash
+> web-header-auditor --url http://your-own-site.com --allow-external
+> ```
 
 ## Output Evidence
 
