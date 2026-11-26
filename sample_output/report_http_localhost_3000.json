@@ -1,0 +1,50 @@
+{
+  "target": "http://localhost:3000",
+  "timestamp": "2026-11-26T10:52:04.176719",
+  "overall_risk_score": 34,
+  "overall_grade": "CRITICAL",
+  "findings": [
+    {
+      "header": "Content-Security-Policy",
+      "status": "MISSING",
+      "severity": "HIGH",
+      "risk": "Why dangerous: Without CSP, the browser has no policy restricting script sources. Injected XSS payloads execute freely, enabling session theft and defacement."
+    },
+    {
+      "header": "X-Frame-Options",
+      "status": "MISSING",
+      "severity": "MEDIUM",
+      "risk": "Why dangerous: Without X-Frame-Options (or CSP frame-ancestors), the page can be iframed by attackers, enabling clickjacking to trick users into actions."
+    },
+    {
+      "header": "Strict-Transport-Security",
+      "status": "MISSING",
+      "severity": "HIGH",
+      "risk": "Why dangerous: Without HSTS, users can be downgraded to HTTP via SSL-stripping MITM attacks, exposing cookies and credentials in plaintext."
+    },
+    {
+      "header": "X-Content-Type-Options",
+      "status": "MISSING",
+      "severity": "LOW",
+      "risk": "Why dangerous: Without nosniff, browsers may MIME-sniff responses and execute user-uploaded content as scripts."
+    },
+    {
+      "header": "Referrer-Policy",
+      "status": "MISSING",
+      "severity": "LOW",
+      "risk": "Why dangerous: Without a Referrer-Policy, full URLs (with tokens/params) leak to third-party sites via the Referer header."
+    },
+    {
+      "header": "Permissions-Policy",
+      "status": "MISSING",
+      "severity": "LOW",
+      "risk": "Why dangerous: Without Permissions-Policy, embedded content may access sensitive browser features (camera, geolocation, mic) on your pages."
+    },
+    {
+      "header": "X-XSS-Protection",
+      "status": "MISSING",
+      "severity": "INFO",
+      "risk": "Why dangerous: Legacy header, largely deprecated; modern browsers ignore it. CSP is the correct modern control."
+    }
+  ]
+}
